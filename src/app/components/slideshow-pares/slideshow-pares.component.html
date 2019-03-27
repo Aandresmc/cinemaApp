@@ -1,0 +1,28 @@
+<ion-grid>
+  <ion-row align-items-center>
+
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let pares of peliculas | pares">
+
+        <ion-row justify-content-center>
+          <ion-col *ngFor="let movie of pares" align-self-center size="12" size-lg="10" size-md="10" size-sm="12" (click)="verPelicula(movie.id)"
+            size-xs="12" >
+            <img  [src]="movie.poster_path | imagen  : 'w200'  : movie.poster_path" alt="movieImage">
+          </ion-col>
+        </ion-row>
+
+      </ion-slide>
+
+      <ion-slide class="slide-mas">
+
+        <ion-fab  vertical="center" horizontal="start" slot="fixed">
+          <ion-fab-button  (click)="cargarMas()" color="light" class="btn-mas" expand="full" size="large" >
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-slide>
+
+    </ion-slides>
+
+  </ion-row>
+</ion-grid>

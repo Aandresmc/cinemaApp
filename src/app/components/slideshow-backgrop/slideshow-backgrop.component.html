@@ -1,0 +1,14 @@
+<ion-grid>
+  <ion-row align-items-center>
+
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let movie of peliculas">
+        <ion-col align-self-center size="12" (click)="verPelicula(movie.id)">
+          <img *ngIf="!movie.backdrop_path" src="/assets/img/no-image-banner.jpg">
+          <img *ngIf="movie.backdrop_path" [src]="movie.backdrop_path | imagen  : 'w500'  : movie.backdrop_path" alt="movieImage">
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,18 @@
+<ion-grid>
+  <ion-row align-items-center>
+
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let movie of peliculas">
+
+        <ion-row justify-content-center>
+          <ion-col align-self-center size="12" size-lg="8" size-md="10" size-sm="12" size-xs="12" (click)="verPelicula(movie.id)">
+              <img   [src]="movie.poster_path | imagen  : 'w300'  : movie.poster_path" alt="movieImage">
+          </ion-col>
+        </ion-row>
+
+      </ion-slide>
+    </ion-slides>
+
+  </ion-row>
+</ion-grid>
+

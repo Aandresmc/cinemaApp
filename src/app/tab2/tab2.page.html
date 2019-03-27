@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Buscar Pelicula
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-toolbar>
+  <ion-searchbar placeholder="Buscar..." animated debounce="700" [value]="textoBuscar"
+    (ionChange)="buscar( $event.detail.value )"></ion-searchbar>
+</ion-toolbar>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list *ngIf="resultados.length === 0">
+    <ion-item *ngFor="let recomendacion of recomendaciones" (click)="activeRecomendacion(recomendacion.title)">
+      <ion-label class="ver-mas" color="primary">{{recomendacion.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-grid fixed>
+
+    <ion-row justify-content-center>
+      <ion-col *ngFor="let resultado of resultados" align-self-center size="12" size-lg="8" size-md="10" size-sm="12" size-xs="12"
+        (click)="verPelicula(resultado.id)">
+        <ion-card>
+          <img [src]="resultado.poster_path | imagen  : 'w500'  : resultado.poster_path">
+          <ion-card-header>
+            <ion-card-subtitle>{{resultado.release_date}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>{{resultado.title}}</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

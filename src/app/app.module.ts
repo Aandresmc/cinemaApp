@@ -11,16 +11,18 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [BrowserModule,
     IonicModule.forRoot(),
-     AppRoutingModule,
-     HttpClientModule,
+    AppRoutingModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-    ],
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -28,4 +30,4 @@ import { environment } from '../environments/environment';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

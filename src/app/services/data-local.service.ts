@@ -30,9 +30,6 @@ export class DataLocalService {
       this.storage.set('peliculas', this.Peliculas)
 
       mensaje = `se agrego ${movie.title} a favoritos!`
-
-      let peli = this.storage.get('peliculas')
-      console.log('storage',peli);
       
     } else {
       mensaje = "ya se encuentra en favoritos..."

@@ -1,9 +1,38 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
+    <ion-title text-center>
+      Favoritos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <ion-row justify-content-center align-items-center margin-vertical padding-vertical *ngIf="favoritos.length === 0">
+
+    <h5 padding-top>No hay favoritos</h5>
+
+  </ion-row>
+
+
+  <ion-grid fixed *ngIf="favoritos.length>0">
+
+    <ion-row justify-content-center>
+      <ion-col *ngFor="let favorito of favoritos" align-self-center size="12" size-lg="3" size-md="4" size-sm="4"
+        size-xs="6" (click)="verPelicula(favorito.id)">
+        <ion-card>
+          <img [src]="favorito.poster_path | imagen  : 'w500'  : favorito.poster_path">
+          <ion-card-header>
+            <ion-card-subtitle>{{favorito.release_date}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>{{favorito.title}}</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

@@ -20,6 +20,8 @@ export class Tab2Page implements OnInit {
   resultados: Movies[] = []
   recomendaciones: Movies[] = []
 
+
+
   buscar(busqueda: string) {
     if (busqueda != "") {
       this._serviceMovie.getBuscarPeliculas(busqueda).

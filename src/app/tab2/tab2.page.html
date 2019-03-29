@@ -21,7 +21,7 @@
   <ion-grid fixed>
 
     <ion-row justify-content-center>
-      <ion-col *ngFor="let resultado of resultados" align-self-center size="12" size-lg="8" size-md="10" size-sm="12" size-xs="12"
+      <ion-col *ngFor="let resultado of resultados" align-self-center size="12" size-lg="3" size-md="4" size-sm="4" size-xs="6"
         (click)="verPelicula(resultado.id)">
         <ion-card>
           <img [src]="resultado.poster_path | imagen  : 'w500'  : resultado.poster_path">

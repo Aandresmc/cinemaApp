@@ -66,4 +66,10 @@ getNuevas(){
     const query = `/search/movie?query=${title}`
     return this.ejecutarQuery<RespuestaMoviDB>(query);
   }
+
+  getCollections(id:string){
+    // const query = `/collection/${id}?ignore=1`;
+    const query = `/movie/${id}/images?ignore=1`
+    return this.ejecutarQuery(query);
+  }
 }

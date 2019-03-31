@@ -12,10 +12,11 @@ import { DataLocalService } from 'src/app/services/data-local.service';
 export class DetalleComponent implements OnInit {
 
   @Input() id;
-
-  movie:PeliculaDetalle;
+  favoritos: PeliculaDetalle[] = []
+  movie: PeliculaDetalle;
   actores: Cast[] = [];
   oculto = 150;
+  icon = 'heart-empty';
 
   slideOptActores = {
     slidesPerView: 3.3,
@@ -23,27 +24,30 @@ export class DetalleComponent implements OnInit {
     spaceBetween: 0
   };
 
-  constructor( 
+  constructor(
     private moviesService: MoviesService,
     private modalCtrl: ModalController,
-    private dataLocal : DataLocalService
+    private dataLocal: DataLocalService,
 
-   ) { }
+  ) { }
 
   ngOnInit() {
-    // console.log('id',this.id);
+
     this.getPeliculaDetalle();
     this.getActores();
+    // this.getImages()
+    this.getFavoritos()
+
   }
 
-  getPeliculaDetalle(){
+  getPeliculaDetalle() {
     this.moviesService.getPeliculaDetalle(this.id).subscribe(respuesta => {
-    this.movie = respuesta
+      this.movie = respuesta
     });
   }
 
 
-  getActores(){
+  getActores() {
     this.moviesService.getActoresPeliculaDetalle(this.id).subscribe(respuesta => {
       this.actores = respuesta.cast
     });
@@ -53,8 +57,25 @@ export class DetalleComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  addFavoritos(){
+  addFavoritos() {
     this.dataLocal.guardarPelicula(this.movie);
+    this.icon = 'heart'
+  }
+
+  getImages() {
+    this.moviesService.getCollections(this.id).subscribe(respuesta => {
+
+    });
+  }
+
+
+  getFavoritos() {
+
+    this.favoritos = this.dataLocal.Peliculas
+
+    const isFavorite = this.favoritos.find(favorite => favorite.id === this.id);
+    isFavorite ? this.icon = 'heart' : 'heart-empty';
+
   }
 
 }

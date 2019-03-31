@@ -6,6 +6,7 @@ import { SlideshowBackgropComponent } from './slideshow-backgrop/slideshow-backg
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { SlideshowParesComponent } from './slideshow-pares/slideshow-pares.component';
 import { DetalleComponent } from './detalle/detalle.component';
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   //significa que puede crearse dinamicamente mediante angular, para los modales
@@ -17,12 +18,14 @@ import { DetalleComponent } from './detalle/detalle.component';
     SlideshowPosterComponent,
     SlideshowParesComponent,
     DetalleComponent,
+    MovieComponent
   ],
   exports: [
     SlideshowBackgropComponent,
     SlideshowPosterComponent,
     SlideshowParesComponent,
     DetalleComponent,
+    MovieComponent
   ],
   imports: [
     CommonModule,

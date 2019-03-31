@@ -6,7 +6,7 @@
 
         <ion-row justify-content-center>
           <ion-col align-self-center size="12" size-lg="8" size-md="10" size-sm="12" size-xs="12" (click)="verPelicula(movie.id)">
-              <img   [src]="movie.poster_path | imagen  : 'w300'  : movie.poster_path" alt="movieImage">
+              <img class="poster-img"  [src]="movie.poster_path | imagen  : 'w300'  : movie.poster_path" alt="movieImage">
           </ion-col>
         </ion-row>
 

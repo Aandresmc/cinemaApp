@@ -9,7 +9,7 @@ esta es la forma mas facil -->
         <h1> {{ movie.title }} </h1>
     </ion-label>
 
-    <img src="/assets/img/no-image-banner.jpg" *ngIf="!movie.backdrop_path">
+    <img src="/assets/img/no-image-banner-movie.jpg" *ngIf="!movie.backdrop_path">
     <img  [src]="movie.backdrop_path | imagen  : 'w500'  : movie.backdrop_path" *ngIf="movie.backdrop_path">
 
     <ion-grid>
@@ -102,7 +102,7 @@ esta es la forma mas facil -->
         <ion-buttons slot="end">
             <ion-button  (click)="addFavoritos()">
                 <ion-label>Favorito</ion-label>
-                <ion-icon   slot="end" name="heart-empty"></ion-icon>
+                <ion-icon   slot="end" [name]="icon"></ion-icon>
             </ion-button>
         </ion-buttons>
 

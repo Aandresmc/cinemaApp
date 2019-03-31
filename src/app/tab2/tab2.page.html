@@ -5,6 +5,7 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-toolbar>
   <ion-searchbar placeholder="Buscar..." animated debounce="700" [value]="textoBuscar"
     (ionChange)="buscar( $event.detail.value )"></ion-searchbar>
@@ -17,24 +18,6 @@
     </ion-item>
   </ion-list>
 
-
-  <ion-grid fixed>
-
-    <ion-row justify-content-center>
-      <ion-col *ngFor="let resultado of resultados" align-self-center size="12" size-lg="3" size-md="4" size-sm="4" size-xs="6"
-        (click)="verPelicula(resultado.id)">
-        <ion-card>
-          <img [src]="resultado.poster_path | imagen  : 'w500'  : resultado.poster_path">
-          <ion-card-header>
-            <ion-card-subtitle>{{resultado.release_date}}</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <h2>{{resultado.title}}</h2>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
+  <app-movie [peliculas]="resultados" *ngIf="resultados.length>0"></app-movie>
 
 </ion-content>

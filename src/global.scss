@@ -10,7 +10,116 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-.ver-mas:hover{
-    cursor: pointer; 
-}
+    .ver-mas:hover{
+        cursor: pointer; 
+    }
 
+
+    .slide-mas{
+        height: 50vh!important;
+    }
+
+
+
+    .poster-img{
+        max-height: 18rem!important;
+    }
+
+   
+    
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: 575.98px) { 
+
+        .slide-mas{
+        height: 50vh!important;
+        }
+
+        .poster-img{
+            max-height: 8rem!important;
+        }
+    }
+    
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) and (max-width: 670.98px) { 
+
+        .slide-mas{
+        height: 60vh!important;
+        
+        }
+        .poster-img{
+            max-height: 15rem!important;
+            margin-right: -8px!important;
+        }
+    }
+    
+    @media (min-width:  671px) and (max-width: 770.98px) { 
+
+        .slide-mas{
+        height: 65vh!important;
+        
+        }
+
+        .poster-img{
+            max-height: 20rem!important;
+            margin-right: -10px!important;;
+        }
+    }
+    
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) and (max-width: 899.98px) { 
+        .slide-mas{
+        height: 70vh!important;
+        
+        }
+
+        .poster-img{
+            max-height: 24rem!important;
+            margin-right: -11px!important;;
+        }
+
+      
+    }
+    
+    
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 900px) and (max-width: 992px) { 
+        .slide-mas{
+         height: 72vh!important;
+    
+        }
+        .poster-img{
+            max-height: 30rem!important;
+            margin-right: -10px!important;;
+        }
+
+      
+    }
+    
+    @media (min-width: 992px) and (max-width: 999.8px) { 
+        .slide-mas{
+        height: 75vh!important;
+        
+        }
+        .poster-img{
+            max-height: 35rem!important;
+            margin-right: -12px!important;;
+        }
+
+       
+    
+    }
+    
+    
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { 
+        .slide-mas{
+        height: 80vh!important;
+        
+        }
+        .poster-img{
+            max-height: 40rem!important;
+            margin-right: -15px!important;;
+        }
+
+       
+     }

@@ -1,6 +1,8 @@
 # cinemaApp
 aplicacion realizada en ionic 4  con la api de peliculas themoviedb.org
 utilizando componentes para cada una de las pantallas creadas las cuales son, peliculas, detalle pelicula, buscar peliculas y favoritos
+# Look page
+https://cinema-ion.firebaseapp.com/
 # Home
 ![image](https://user-images.githubusercontent.com/28877837/55284139-44419980-5336-11e9-947a-f35a9a807e57.png)
 # Cargar peliculas

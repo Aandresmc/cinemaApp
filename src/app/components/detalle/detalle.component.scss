@@ -23,8 +23,14 @@
 
 .titulo h1{
     position: absolute;
-    top: 28px;
-    left: 5px;
+    top:  1rem;
+    left:  0.5rem;;
+    max-width: 87%;
+}
+.titulo ion-button{
+    position: absolute;
+    top: 0.7rem;
+    right:  0.1rem;
 }
 
 .card-actor {

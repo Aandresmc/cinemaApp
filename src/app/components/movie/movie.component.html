@@ -1,18 +1,22 @@
-<ion-grid fixed >
+<ion-grid fixed>
 
   <ion-row justify-content-center>
     <ion-col *ngFor="let pelicula of peliculas" align-self-center size="12" size-lg="3" size-md="4" size-sm="4"
       size-xs="6" (click)="verPelicula(pelicula.id)">
+
       <ion-card>
-        <img  *ngIf="!pelicula.poster_path" src="/assets/img/no-image-movie.png">
+        <img *ngIf="!pelicula.poster_path" src="/assets/img/no-image-movie.png">
         <img *ngIf="pelicula.poster_path" [src]="pelicula.poster_path | imagen  : 'w500'  : pelicula.poster_path">
+       
         <ion-card-header>
           <ion-card-subtitle>{{pelicula.release_date}}</ion-card-subtitle>
         </ion-card-header>
+
         <ion-card-content>
           <h2>{{pelicula.title}}</h2>
         </ion-card-content>
       </ion-card>
+
     </ion-col>
   </ion-row>
 

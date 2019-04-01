@@ -7,12 +7,12 @@ import { Tab1Page } from './tab1.page';
 import { ComponentsModule } from '../components/components.module';
 
 
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    // se importo para poder utilizar todos los componentes
     ComponentsModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }]),
   ],

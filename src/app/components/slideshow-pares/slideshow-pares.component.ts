@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output ,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movies } from 'src/app/interfaces/interfaces';
 import { DetalleComponent } from '../detalle/detalle.component';
 import { ModalController } from '@ionic/angular';
@@ -11,29 +11,35 @@ import { ModalController } from '@ionic/angular';
 })
 export class SlideshowParesComponent implements OnInit {
 
-  @Input() peliculas : Movies [] = []
-  @Output() masPeliculas =  new EventEmitter();
-  
+  @Input() peliculas: Movies[] = []
+  @Output() masPeliculas = new EventEmitter();
+
   slideOpts = {
-    slidesPerView : 3.3,
-    freeMode:  true,
-    spaceBetween:-4
+    slidesPerView: 3.3,
+    freeMode: true,
+    spaceBetween: -4
   }
-  
-  constructor(private modalCtrl:ModalController) { }
+  lookSpinner = false
 
-  ngOnInit() {}
+  constructor(private modalCtrl: ModalController) { }
 
-  cargarMas(){
-    this.masPeliculas.emit();
+  ngOnInit() { }
+
+  async cargarMas() {
+    this.lookSpinner = true;
+    await this.masPeliculas.emit();
+    setTimeout(() => {
+      this.lookSpinner = false
+    }, 470);
+
   }
 
-  async verPelicula(id: string){
+  async verPelicula(id: string) {
     const modal = await this.modalCtrl.create({
-    component:DetalleComponent,
-    componentProps:{
-      id
-    }
+      component: DetalleComponent,
+      componentProps: {
+        id
+      }
     });
 
     modal.present();

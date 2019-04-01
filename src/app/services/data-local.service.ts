@@ -47,5 +47,12 @@ export class DataLocalService {
     toast.present();
   }
 
+  async cargarFavoritos() {
+
+    const peliculas = await this.storage.get('peliculas');
+    this.Peliculas = peliculas || [];
+    return this.Peliculas;
+  }
+
 }
 

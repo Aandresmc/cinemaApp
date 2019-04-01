@@ -2,7 +2,7 @@
   <ion-row align-items-center>
 
     <ion-slides [options]="slideOpts">
-      <ion-slide  *ngFor="let movie of peliculas">
+      <ion-slide  *ngFor="let movie of peliculas  | filtroExisteImagen">
         <ion-col  align-self-center size="12" size-lg="8" size-md="6" (click)="verPelicula(movie.id)">
           <img  *ngIf="!movie.backdrop_path" src="/assets/img/no-image-banner.jpg">
           <img  *ngIf="movie.backdrop_path"

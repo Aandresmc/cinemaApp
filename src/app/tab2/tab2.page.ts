@@ -11,7 +11,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class Tab2Page implements OnInit {
 
-  constructor(private modalCtrl:ModalController,private _serviceMovie: MoviesService) { }
+  constructor(private modalCtrl: ModalController, private _serviceMovie: MoviesService) { }
 
   ngOnInit() {
     this.getRecomendaciones()
@@ -19,20 +19,25 @@ export class Tab2Page implements OnInit {
   textoBuscar: String = "";
   resultados: Movies[] = []
   recomendaciones: Movies[] = []
+  buscando = false;
 
 
 
   buscar(busqueda: string) {
-    if (busqueda != "") {
-      this._serviceMovie.getBuscarPeliculas(busqueda).
-        subscribe(respuesta => {
-          this.resultados = [...respuesta.results]
-          console.log('resultados', this.resultados);
+    this.buscando = true;
+    setTimeout(() => {
+      if (busqueda != "") {
+        this._serviceMovie.getBuscarPeliculas(busqueda).
+          subscribe(respuesta => {
+            this.resultados = [...respuesta.results]
 
-        });
-    } else {
-      this.resultados = []
-    }
+            this.buscando = false;
+          });
+      } else {
+        this.buscando = false;
+        this.resultados = []
+      }
+    }, 300);
   }
 
   getRecomendaciones() {
@@ -47,12 +52,12 @@ export class Tab2Page implements OnInit {
     this.textoBuscar = recomendacion
   }
 
-  async verPelicula(id: string){
+  async verPelicula(id: string) {
     const modal = await this.modalCtrl.create({
-    component:DetalleComponent,
-    componentProps:{
-      id
-    }
+      component: DetalleComponent,
+      componentProps: {
+        id
+      }
     });
 
     modal.present();

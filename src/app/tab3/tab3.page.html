@@ -8,12 +8,40 @@
 
 <ion-content>
 
-  <ion-row justify-content-center align-items-center margin-vertical padding-vertical *ngIf="favoritos.length === 0">
+  <ion-row justify-content-center align-items-center margin-vertical padding-vertical
+    *ngIf="favoritoGenero.length === 0">
 
     <h5 padding-top>No hay favoritos</h5>
 
   </ion-row>
 
-  <app-movie [peliculas]="favoritos" *ngIf="favoritos.length>0"></app-movie>
+  <div *ngFor="let favorite of favoritoGenero">
+    <ion-grid fixed>
+      <ion-row justify-content-between align-items-center *ngIf="favorite.pelis.length>0">
+        <ion-col align-self-center size="auto" class="categorias">
+          <h4 class="categorias-title" no-margin text-center>{{favorite.genero}}</h4>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-item lines="inset">
 
+            <ion-badge class="badge">{{favorite.pelis.length}}</ion-badge>
+            <ion-icon name="star-outline"></ion-icon>
+          </ion-item>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid no-padding>
+      <ion-row align-items-center>
+        <ion-slide>
+          <ion-row justify-content-center>
+            <app-movie [peliculas]="favorite.pelis"></app-movie>
+          </ion-row>
+        </ion-slide>
+      </ion-row>
+    </ion-grid>
+
+  </div>
 </ion-content>

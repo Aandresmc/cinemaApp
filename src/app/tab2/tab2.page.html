@@ -7,14 +7,23 @@
 </ion-header>
 
 <ion-toolbar>
-  <ion-searchbar placeholder="Buscar..." animated debounce="700" [value]="textoBuscar"
+  <ion-searchbar placeholder="Buscar..." animated debounce="470" [value]="textoBuscar"
     (ionChange)="buscar( $event.detail.value )"></ion-searchbar>
 </ion-toolbar>
 
 <ion-content>
+
+  <ion-grid *ngIf="buscando">
+    <ion-row>
+      <ion-col text-center>
+        <ion-spinner color="tertiary" name="crescent"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-list *ngIf="resultados.length === 0">
     <ion-item *ngFor="let recomendacion of recomendaciones" (click)="activeRecomendacion(recomendacion.title)">
-      <ion-label class="ver-mas" color="primary">{{recomendacion.title}}</ion-label>
+      <ion-label class="ver-mas" color="tertiary">{{recomendacion.title}}</ion-label>
     </ion-item>
   </ion-list>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RespuestaMoviDB, PeliculaDetalle, RespuestaCredits } from '../interfaces/interfaces';
+import { RespuestaMoviDB, PeliculaDetalle, RespuestaCredits, Genre } from '../interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 
 const URL =  environment.url
@@ -11,6 +11,7 @@ const APIKEY = environment.apikey
 export class MoviesService {
 
   private popularesPage = 0
+  generos:Genre [] = []
 
   constructor(private http : HttpClient) {}
 
@@ -71,5 +72,21 @@ getNuevas(){
     // const query = `/collection/${id}?ignore=1`;
     const query = `/movie/${id}/images?ignore=1`
     return this.ejecutarQuery(query);
+  }
+
+  
+  cargarGeneros(): Promise<Genre[]> {
+    // https://api.themoviedb.org/3/genre/movie/list?api_key=1865f43a0549ca50d341dd9ab8b29f49&language=es&include_image_language=es
+    return new Promise( resolve => {
+
+      this.ejecutarQuery(`/genre/movie/list?ignore=1`)
+        .subscribe( resp => {
+          this.generos = resp['genres'];
+          resolve(this.generos);
+        });
+
+    });
+
+
   }
 }
